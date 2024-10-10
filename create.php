@@ -16,14 +16,16 @@
         </header>
 
         <form action="process.php" method="post">
-            <div class="form-element my-4">
+          <!--  <div class="form-element my-4">
                 <select name="type" id="" class="form-control">
                     <option value=" ">Select Product Type</option>
                     <option value=" ">Computer Hardware</option>
                     <option value=" ">Electronics</option>
                     <option value=" ">Other</option>
                 </select>
-            </div>
+            </div> -->
+            <div class="form-element my-4">
+            <input type="text" class="form-control" name="type" placeholder="Type of Product">            
             <div class="form-element my-4">
                 <input type="text" class="form-control" name="product" placeholder="Product Name">
             </div>
