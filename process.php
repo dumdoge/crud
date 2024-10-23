@@ -19,4 +19,19 @@ if(isset($_POST['create'])){
     }
 }
 
+if (isset($_POST["edit"])) {
+    $title = mysqli_real_escape_string($conn, $_POST["type"]);
+    $type = mysqli_real_escape_string($conn, $_POST["product"]);
+    $author = mysqli_real_escape_string($conn, $_POST["manufacturer"]);
+    $description = mysqli_real_escape_string($conn, $_POST["location"]);
+    $id = mysqli_real_escape_string($conn, $_POST["id"]);
+    $sqlUpdate = "UPDATE books SET type = '$type', product = '$prodcut', manufacturer = '$manufacturer', location = '$llocation' WHERE id='$id'";
+    if(mysqli_query($conn,$sqlUpdate)){
+        session_start();
+        $_SESSION["update"] = "Product Updated Successfully!";
+        header("Location:index.php");
+    }else{
+        die("Something went wrong");
+    }
+}
 ?>

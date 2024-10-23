@@ -9,13 +9,15 @@
 <body>
     <div class="container my-5">
         <header class="d-flex justfiy-content-between my-4">
-                <h1>Loading Dock</h1>
-                <div>
-                <a href="index.php" class="btn btn-primary">Back</a>
-                </div> 
+                <h1>Dock</h1>
         </header>
 
+        <div>
+                <a href="index.php" class="btn btn-primary">Back</a>
+        </div> 
+                
         <form action="process.php" method="post">
+
           <!--  <div class="form-element my-4">
                 <select name="type" id="" class="form-control">
                     <option value=" ">Select Product Type</option>
@@ -24,6 +26,7 @@
                     <option value=" ">Other</option>
                 </select>
             </div> -->
+
             <div class="form-element my-4">
             <input type="text" class="form-control" name="type" placeholder="Type of Product">            
             <div class="form-element my-4">
