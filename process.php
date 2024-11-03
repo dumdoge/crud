@@ -4,7 +4,7 @@ include "connect.php";
 if(isset($_POST['create'])){
     echo "Form data received:";
     print_r($_POST);
-
+    $conn = Connect::getInstance()->getConnection();
     $type = mysqli_real_escape_string($conn, $_POST["type"]);
     $product = mysqli_real_escape_string($conn, $_POST["product"]);
     $manufacturer = mysqli_real_escape_string($conn, $_POST["manufacturer"]);
@@ -20,12 +20,13 @@ if(isset($_POST['create'])){
 }
 
 if (isset($_POST["edit"])) {
+    $conn = Connect::getInstance()->getConnection();
     $title = mysqli_real_escape_string($conn, $_POST["type"]);
     $type = mysqli_real_escape_string($conn, $_POST["product"]);
     $author = mysqli_real_escape_string($conn, $_POST["manufacturer"]);
     $description = mysqli_real_escape_string($conn, $_POST["location"]);
     $id = mysqli_real_escape_string($conn, $_POST["id"]);
-    $sqlUpdate = "UPDATE books SET type = '$type', product = '$prodcut', manufacturer = '$manufacturer', location = '$llocation' WHERE id='$id'";
+    $sqlUpdate = "UPDATE loading_dock SET type = '$type', product = '$product', manufacturer = '$manufacturer', location = '$location' WHERE id= '$id' ";
     if(mysqli_query($conn,$sqlUpdate)){
         session_start();
         $_SESSION["update"] = "Product Updated Successfully!";
@@ -34,4 +35,6 @@ if (isset($_POST["edit"])) {
         die("Something went wrong");
     }
 }
+
+
 ?>

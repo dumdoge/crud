@@ -24,8 +24,9 @@
             <?php
             include("connect.php");
             $id = $_GET['id'];
+            $conn = Connect::getInstance()->getConnection();
             if ($id) {
-                $sql = "SELECT * FROM loading_dock WHERE id = $id";
+                $sql = "SELECT * FROM loading_dock WHERE id ='$id'";
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)) {
                  ?>

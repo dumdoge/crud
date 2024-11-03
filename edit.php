@@ -21,7 +21,7 @@
             if (isset($_GET['id'])) {
                 include("connect.php");
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM loading_dock WHERE id=$id";
+                $sql = "SELECT * FROM loading_dock WHERE id='$id'";
                 $result = mysqli_query($conn,$sql);
                 $row = mysqli_fetch_array($result);
                 ?>
@@ -29,20 +29,17 @@
                 <input type="text" class="form-control" name="product" placeholder="Product Name:" value="<?php echo $row["product"]; ?>">
             </div>
             <div class="form-elemnt my-4">
-                <input type="text" class="form-control" name="manufacturer" placeholder="Manuufacturer:" value="<?php echo $row["manufacturer"]; ?>">
+                <input type="text" class="form-control" name="manufacturer" placeholder="Manufacturer:" value="<?php echo $row["manufacturer"]; ?>">
             </div>
+
             <div class="form-elemnt my-4">
-                <select name="type" id="" class="form-control">
-                    <option value="">Select Product Type:</option>
-                    <option value="Type" <?php if($row["type"]=="Type"){echo "selected";} ?>>Type</option>
-                    <option value="Product" <?php if($row["type"]=="Product"){echo "selected";} ?>>Product</option>
-                    <option value="Manufacturer" <?php if($row["type"]=="Manufacturer"){echo "selected";} ?>>Manufacturer</option>
-                    <option value="Location" <?php if($row["type"]=="Location"){echo "selected";} ?>>Location</option>
-                </select>
+                <input type="text" class="form-control" name="type" placeholder="Product Type:" value="<?php echo $row["type"]; ?>">
             </div>
+            
             <div class="form-element my-4">
                 <textarea name="description" id="" class="form-control" placeholder="Location:"><?php echo $row["location"]; ?></textarea>
             </div>
+                
             <input type="hidden" value="<?php echo $id; ?>" name="id">
             <div class="form-element my-4">
                 <input type="submit" name="edit" value="Edit Product" class="btn btn-primary">
