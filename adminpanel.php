@@ -1,7 +1,27 @@
 <?php
 
+include ('connect.php');
 $conn = Connect::getInstance()->getConnection();
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$role = $_POST['role'];
+
+
+$stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $username, $email, $password, $role);
+
+if ($stmt->execute()) {
+    echo "Account created successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +122,7 @@ $conn = Connect::getInstance()->getConnection();
     <div class="box">
         <div class="form-box">
             <header>Create User Account</header>
-            <form action="/create_account" method="POST">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"></form>
                 <div class="field">
                     <label for="username">Username:</label>
                     <div class="input">
