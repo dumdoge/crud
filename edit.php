@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Edit Product Details</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <header class="d-flex justify-content-between my-4">
             <h1>Edit Product</h1>
             <div>
-            <a href="index.php" class="btn btn-primary">Back</a>
+            <a href="loading_dock.php" class="btn btn-primary">Back</a>
             </div>
         </header>
         <form action="process.php" method="post">
@@ -22,7 +22,8 @@
                 include("connect.php");
                 $id = $_GET['id'];
                 $sql = "SELECT * FROM loading_dock WHERE id='$id'";
-                $result = mysqli_query($conn,$sql);
+                $conn = Connect::getInstance()->getConnection();
+                $result = mysqli_query($conn,$sql); 
                 $row = mysqli_fetch_array($result);
                 ?>
                      <div class="form-elemnt my-4">

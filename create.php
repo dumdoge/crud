@@ -13,7 +13,7 @@
         </header>
 
         <div>
-                <a href="index.php" class="btn btn-primary">Back</a>
+                <a href="loading_dock.php" class="btn btn-primary">Back</a>
         </div> 
                 
         <form action="process.php" method="post">
@@ -39,10 +39,16 @@
                 <input type="text" class="form-control" name="location" placeholder="Location Shipped From">
             </div>
             <div class="form-element">
-                <input type="submit" name="create" value="Add Product" class="btn btn-primary">
+                <input type="submit" href="loading_dock.php" name="create" value="Add Product" class="btn btn-primary">
             </div>
         </form>
 
+        
+
     </div>
 </body>
+
+
+
+
 </html>

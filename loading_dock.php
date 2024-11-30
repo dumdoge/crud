@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Dock List</title>
     <style>
         table  td, table th{
@@ -18,9 +19,11 @@
     <div class="container my-4">
         <header class="d-flex justify-content-between my-4">
             <h1>Dock List</h1>
+            
             <div>
-                <a href="create.php" class="btn btn-primary">Add Product</a>
+            <a href="index.php" class="btn btn-primary">Logout</a> 
             </div>
+
         </header>
         <?php
         session_start();
@@ -59,7 +62,11 @@
         unset($_SESSION["delete"]);
         }
         ?>
-        
+            <div class="float-end">  
+            <a href="create.php" class="btn btn-primary">Add Product</a>
+            </div>
+            <br>
+            <br>
         <table class="table table-bordered">
         <thead>
             <tr>
@@ -71,6 +78,7 @@
             </tr>
         </thead>
         <tbody>
+        
         
         <?php
         include('connect.php');
@@ -87,6 +95,10 @@
                 <td>
                     <a href="view.php?id=<?php echo $data['id']; ?>" class="btn btn-info">Read More</a>
                     <a href="edit.php?id=<?php echo $data['id']; ?>" class="btn btn-warning">Edit</a>
+                    
+</body>
+</html>
+                    </div>
                     <a href="delete.php?id=<?php echo $data['id']; ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>

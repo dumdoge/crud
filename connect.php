@@ -22,6 +22,7 @@ class Connect
     private $dbUser = 'root';
     private $dbPass = '';
 
+
     private function __construct()
     {
         $this->conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPass, $this->dbName);

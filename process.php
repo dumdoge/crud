@@ -2,7 +2,6 @@
 include "connect.php";
 
 if(isset($_POST['create'])){
-    echo "Form data received:";
     print_r($_POST);
     $conn = Connect::getInstance()->getConnection();
     $type = mysqli_real_escape_string($conn, $_POST["type"]);
@@ -14,6 +13,7 @@ if(isset($_POST['create'])){
     if (mysqli_query($conn, $sqlInsert)){
         session_start();
         $_SESSION['create'] = "Product Added Successfully";
+        header("Location:loading_dock.php");
     } else {
         die("Something went wrong");
     }
@@ -30,9 +30,28 @@ if (isset($_POST["edit"])) {
     if(mysqli_query($conn,$sqlUpdate)){
         session_start();
         $_SESSION["update"] = "Product Updated Successfully!";
-        header("Location:index.php");
+        header("Location:loading_dock.php");
     }else{
         die("Something went wrong");
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $id = $_POST['id'];
+        $product = $_POST['product'];
+        $manufacturer = $_POST['manufacturer'];
+        $type = $_POST['type'];
+        $description = $_POST['description'];
+    
+        $sql = "UPDATE loading_dock SET product = '$product', manufacturer = '$manufacturer', type = '$type', location = '$description' WHERE id = '$id'";
+        $conn = Connect::getInstance()->getConnection();
+        $result = mysqli_query($conn, $sql);
+    
+        if ($result) {
+            header("Location: loading_dock.php");
+            exit;
+        } else {
+            echo "Error updating product: " . mysqli_error($conn);
+        }
     }
 }
 

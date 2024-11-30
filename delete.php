@@ -7,7 +7,7 @@ $sql = "DELETE FROM loading_dock WHERE id='$id'";
 if(mysqli_query($conn,$sql)){
     session_start();
     $_SESSION["delete"] = "Product Deleted Successfully!";
-    header("Location:index.php");
+    header("Location:loading_dock.php");
 }else{
     die("Something went wrong");
 }
